@@ -1,0 +1,18 @@
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: "auth_service"
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:1234/auth_db
+    username: bob
+    password: apazev09

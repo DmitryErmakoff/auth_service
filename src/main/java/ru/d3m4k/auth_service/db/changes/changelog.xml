@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd" objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS" logicalFilePath="./changes/changelog.xml">
+    <changeSet id="create_table_post_v2" author="dmitryermakoff">
+        <createTable tableName="post">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="author" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="date" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" />
+            <column name="type_posts" type="VARCHAR(255)"/> <!-- assuming TypePosts is an enum -->
+        </createTable>
+    </changeSet>
+    <changeSet id="modify_title_column_type" author="dmitryermakoff">
+        <sql dbms="postgresql">
+            ALTER TABLE post ALTER COLUMN title TYPE TEXT;
+        </sql>
+    </changeSet>
+    <changeSet id="create_table_user" author="dmitryermakoff">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="chat_id" type="BIGINT"/>
+            <column name="login" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="tg_account" type="VARCHAR(255)"/>
+            <column name="images" type="BLOB"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
