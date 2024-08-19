@@ -21,11 +21,14 @@ public class UserInfoService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserInfo> userDetail = userInfoRepository.findByName(username);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        Optional<UserInfo> userDetail = userInfoRepository.findByLogin(login);
 
-        return userDetail.map(UserInfoDetails::new)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
+        if (!userDetail.isPresent()) {
+            System.out.println("bob");
+            throw new UsernameNotFoundException("User not found " + login);
+        }
+        return new UserInfoDetails(userDetail.get());
     }
 
     public String addUser(UserInfo userInfo) {

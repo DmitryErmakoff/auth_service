@@ -4,6 +4,7 @@ services:
     image: postgres
     ports:
       - "1234:5432"
+    container_name: auth_db
     environment:
       POSTGRES_DB: auth_db
       POSTGRES_USER: bob
