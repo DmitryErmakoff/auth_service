@@ -1,5 +1,6 @@
 package ru.d3m4k.auth_service.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,6 +13,7 @@ import ru.d3m4k.auth_service.entity.UserInfo;
 import ru.d3m4k.auth_service.service.JwtService;
 import ru.d3m4k.auth_service.service.UserInfoService;
 
+@Tag(name = "Сервис авторизации")
 @RestController
 @RequestMapping("/auth")
 public class UserController {
