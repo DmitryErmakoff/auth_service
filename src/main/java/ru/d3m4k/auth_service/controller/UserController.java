@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import ru.d3m4k.auth_service.entity.AuthRequest;
+import ru.d3m4k.auth_service.entity.RegistryRequest;
 import ru.d3m4k.auth_service.entity.UserInfo;
 import ru.d3m4k.auth_service.service.JwtService;
 import ru.d3m4k.auth_service.service.UserInfoService;
@@ -33,8 +34,8 @@ public class UserController {
     }
 
     @PostMapping("/addNewUser")
-    public String addNewUser(@RequestBody UserInfo userInfo) {
-        return service.addUser(userInfo);
+    public UserInfo addNewUser(@RequestBody RegistryRequest registryRequest) {
+        return service.addUser(registryRequest);
     }
 
     @GetMapping("/user/userProfile")
